@@ -10,3 +10,10 @@ So, in order to setup, do the following:
 4. If you get an error saying that "Apple could not verify “SDL3.framework” is free of malware that may harm your Mac or compromise your privacy", then run `xattr -r -d com.apple.quarantine SDL3.framework` in the `third_party` directory.
 
 Intellisense does not work. Dunno why.
+
+### Plan
+
+1. Take a location at the center. Draw a point.
+2. Continue drawing points in any direction.
+3. Randomize the direction in which the points are being drawn.
+4. Make multiple instances of this run simultaneously.

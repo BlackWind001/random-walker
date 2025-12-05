@@ -8,6 +8,6 @@ RPATH_ARGS="-Wl,-rpath,@loader_path/./third_party"
 
 EXEC_PATH="./build"
 
-g++ -std=c++17 -v -o $EXEC_PATH -I$INCLUDE_DIR -F$LINK_DIR -framework $FRAMEWORK $RPATH_ARGS main.cc
+g++ -std=c++17 -v -g -o $EXEC_PATH -I$INCLUDE_DIR -F$LINK_DIR -framework $FRAMEWORK $RPATH_ARGS main.cc
 
 $EXEC_PATH
