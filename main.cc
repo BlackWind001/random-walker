@@ -6,8 +6,8 @@
 #define WIDTH 900
 #define HEIGHT 600
 
-#define RECT_HEIGHT 5
-#define RECT_WIDTH 5
+#define RECT_HEIGHT 2
+#define RECT_WIDTH 2
 #define SCALE 10
 
 enum Direction : int {
@@ -45,9 +45,7 @@ class Walker {
     Uint32 color;
 
     Direction get_direction () {
-      srand(rand());
-
-      return (Direction)(rand() % 4);
+      return (Direction)(rand()/(RAND_MAX/4));;
     }
 
     RGB hsl_to_rgb(float h, float s, float l) {
@@ -88,9 +86,7 @@ class Walker {
     }
 
     void populate_color () {
-      srand(time(NULL));
-
-      float h = (rand() % 360);
+      float h = (rand()/(RAND_MAX/360));
       float s = 1.0;
       float l = 0.5;
 
@@ -143,6 +139,12 @@ class WalkersManager {
       }
     }
 
+    void move_walkers() {
+      for (int i = 0; i < num_walkers; i++) {
+        walkers[i].move();
+      }
+    }
+
     ~WalkersManager () {
       delete[] walkers;
     }
@@ -154,11 +156,21 @@ class WalkersManager {
 
 int main (int argc, char **argv) {
   int app_running = 1;
+  int number_of_walkers = 5;
   SDL_Event e;
   SDL_Window *pwindow = SDL_CreateWindow("Random walk", WIDTH, HEIGHT, 0);
   SDL_Surface *psurface = SDL_GetWindowSurface(pwindow);
 
-  Walker *walker = new Walker(psurface);
+
+  if (argc == 2) {
+    number_of_walkers = atoi(argv[1]);
+    std::cout<<"Number of walkers: "<<number_of_walkers<<std::endl;
+  }
+
+
+  srand(time(NULL));
+
+  WalkersManager *manager = new WalkersManager(number_of_walkers, psurface);
 
   while(app_running) {
     while(SDL_PollEvent(&e) != 0) {
@@ -172,9 +184,9 @@ int main (int argc, char **argv) {
     
 
      // Decide a random direction here.
-    walker->move();
+    manager->move_walkers();
     SDL_UpdateWindowSurface(pwindow);
-    SDL_Delay(10);
+    SDL_Delay(20);
   }
   return 0;
 }
