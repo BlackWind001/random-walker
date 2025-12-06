@@ -1,3 +1,7 @@
+### Why?
+
+Cause I wanted to have fun with programming again and the endgoal on [this stream](https://www.youtube.com/watch?v=ErA4U9WqNCE) seemed nice.
+
 ### Setup
 
 Setup is a bitch on Mac - we have to use frameworks instead of being able to statically link.
@@ -11,9 +15,9 @@ So, in order to setup, do the following:
 
 Intellisense does not work. Dunno why.
 
-### Plan
+### Preview
 
-1. Take a location at the center. Draw a point.
-2. Continue drawing points in any direction.
-3. Randomize the direction in which the points are being drawn.
-4. Make multiple instances of this run simultaneously.
+![random_walker_1](./assets/random_walker_1.png "Random walker 1")
+![random_walker_10](./assets/random_walker_10.png "Random walker 10")
+![random_walker_100](./assets/random_walker_100.png "Random walker 100")
+![random_walker_1000](./assets/random_walker_1000.png "Random walker 1000")
